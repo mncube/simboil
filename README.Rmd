@@ -80,7 +80,7 @@ evt_cdf(n = 10^5, ylab = "Cumulative Probability", col = "blue", main = "Uniform
 
 You can also change from the uniform distribution to other distributions such as the normal distribution by using anonymous functions
 ```{r}
-evt_cdf(n = 500, ylab = "Cumulative Probability", col = "blue", main = "Normal ECDF (black) vs Normal CDF (blue)",
+evt_cdf(n = 200, ylab = "Cumulative Probability", col = "blue", main = "Normal ECDF (black) vs Normal CDF (blue)",
         remp = function(x)stats::rnorm(x),
         ptrue = function(x)stats::pnorm(x))
 ```
