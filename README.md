@@ -31,7 +31,7 @@ Simulations presented by Dan Uehara for UseR Oslo:
 library(simboil)
 coinflips <- simtest()
 mean(coinflips)
-#> [1] 0.97
+#> [1] 0.99
 ```
 
 ## Use simulation to get quantiles
@@ -59,25 +59,26 @@ getqs <- simq(frame = sim_scores, ref_samp = practice_test,
 ``` r
 #Get requested quantiles (example uses defaults of lowp = .025, highp = .975)
 getqs$quantiles
-#>    2.5%   97.5% 
-#> 70.7006 80.9246
+#>     2.5%    97.5% 
+#> 70.26642 80.32371
 
 #Compare practice test to distribution of past tests
 getqs$histogram
 #> $breaks
-#>  [1] 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86
+#>  [1] 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86
 #> 
 #> $counts
-#>  [1]    2   13   37   77  203  444  728 1039 1382 1494 1466 1244  848  505  289
-#> [16]  159   44   21    3    2
+#>  [1]    1    7    8   48  127  303  568  929 1237 1489 1560 1317 1014  684  383
+#> [16]  205   83   26    7    2    2
 #> 
 #> $density
-#>  [1] 0.0002 0.0013 0.0037 0.0077 0.0203 0.0444 0.0728 0.1039 0.1382 0.1494
-#> [11] 0.1466 0.1244 0.0848 0.0505 0.0289 0.0159 0.0044 0.0021 0.0003 0.0002
+#>  [1] 0.0001 0.0007 0.0008 0.0048 0.0127 0.0303 0.0568 0.0929 0.1237 0.1489
+#> [11] 0.1560 0.1317 0.1014 0.0684 0.0383 0.0205 0.0083 0.0026 0.0007 0.0002
+#> [21] 0.0002
 #> 
 #> $mids
-#>  [1] 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5 74.5 75.5 76.5 77.5 78.5 79.5 80.5
-#> [16] 81.5 82.5 83.5 84.5 85.5
+#>  [1] 65.5 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5 74.5 75.5 76.5 77.5 78.5 79.5
+#> [16] 80.5 81.5 82.5 83.5 84.5 85.5
 #> 
 #> $xname
 #> [1] "samps"
@@ -111,7 +112,7 @@ You can also change from the uniform distribution to other distributions
 such as the normal distribution by using anonymous functions
 
 ``` r
-evt_cdf(n = 10^5, ylab = "Cumulative Probability", col = "blue", main = "Normal ECDF (black) vs Normal CDF (blue)",
+evt_cdf(n = 500, ylab = "Cumulative Probability", col = "blue", main = "Normal ECDF (black) vs Normal CDF (blue)",
         remp = function(x)stats::rnorm(x),
         ptrue = function(x)stats::pnorm(x))
 ```
