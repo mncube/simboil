@@ -66,3 +66,22 @@ getqs$quantiles
 getqs$histogram
 ```
 
+## Compare the empirical cdf to the true cdf using the plots
+
+Plot the empirical vs true cdf for the uniform distribution as follows:
+```{r}
+evt_cdf(ylab = "Cumulative Probability", col = "blue", main = "Uniform ECDF (black) vs Uniform CDF (blue)")
+```
+
+To get a more accurate ECDF plot, increase the number of samples using n
+```{r}
+evt_cdf(n = 10^5, ylab = "Cumulative Probability", col = "blue", main = "Uniform ECDF (black) vs Uniform CDF (blue)")
+```
+
+You can also change from the uniform distribution to other distributions such as the normal distribution by using anonymous functions
+```{r}
+evt_cdf(n = 10^5, ylab = "Cumulative Probability", col = "blue", main = "Normal ECDF (black) vs Normal CDF (blue)",
+        remp = function(x)stats::rnorm(x),
+        ptrue = function(x)stats::pnorm(x))
+```
+
